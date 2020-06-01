@@ -8,4 +8,4 @@ output "workspace_id" {
 
 output "portal_url" {
   value = azurerm_log_analytics_workspace.la.portal_url
-} 
+}
