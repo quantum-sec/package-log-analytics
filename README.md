@@ -1,6 +1,6 @@
 # package-acr
 
-This repository contains modules for deploying and managing Azure Container Registry (ACR) resources
+This repository contains modules for deploying and managing Azure Log Analytics Workspace
 that are shared across other modules or instances.
 
 ## Using a Terraform Module
