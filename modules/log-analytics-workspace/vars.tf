@@ -1,20 +1,20 @@
 variable "location" {
-  description = "The Azure region in which this resource group will be deployed."
+  description = "The Azure region in which this Azure Log Analytics workspace will be deployed."
   type        = string
 }
 
 variable "name" {
-  description = "The name to assign to the resource group."
+  description = "The name to assign to the LA workspace."
   type        = string
 }
 
 variable "resource_group_name" {
-  description = "The name of the resource group in which this registry will be provisioned."
+  description = "The name of the resource group in which this LA workspace will be provisioned."
   type        = string
 }
 
 variable "sku" {
-  description = "The SKU that determines the level at which this registry will be provisioned. Either `Basic` or `Premium`."
+  description = "The SKU that determines the class of workspace to be provisioned. Either `Free` , `Standard` , `PerGB2018` or `Premium`."
   type        = string
   default     = "Free"
 }
