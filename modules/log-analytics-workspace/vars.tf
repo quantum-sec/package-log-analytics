@@ -20,13 +20,13 @@ variable "sku" {
 }
 
 variable "retention_in_days" {
-  description = "(Optional) The workspace data retention in days. Possible values are either 7 (Free Tier only) or range between 30 and 730."
-  type        = string
+  description = "The workspace data retention in days. Possible values are either 7 (Free Tier only) or range between 30 and 730."
+  type        = number
   default     = 7
 }
 
 variable "tags" {
-  description = "(Optional) A mapping of tags to assign to the resource."
-  type        = string
-  default     = null
+  description = "A mapping of tags to assign to the resource."
+  type        = map(string)
+  default     = {}
 }
