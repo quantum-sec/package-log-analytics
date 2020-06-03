@@ -9,3 +9,11 @@ output "workspace_id" {
 output "portal_url" {
   value = azurerm_log_analytics_workspace.la.portal_url
 }
+
+output "primary_shared_key" {
+  value = azurerm_log_analytics_workspace.la.primary_shared_key
+}
+
+output "secondary_shared_key" {
+  value = azurerm_log_analytics_workspace.la.primary_shared_key
+}

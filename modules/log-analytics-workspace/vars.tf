@@ -4,12 +4,12 @@ variable "location" {
 }
 
 variable "name" {
-  description = "The name to assign to the LA workspace."
+  description = "The name to assign to the Log Analytics workspace."
   type        = string
 }
 
 variable "resource_group_name" {
-  description = "The name of the resource group in which this LA workspace will be provisioned."
+  description = "The name of the resource group in which this Log Analytics workspace will be provisioned."
   type        = string
 }
 
@@ -20,13 +20,13 @@ variable "sku" {
 }
 
 variable "retention_in_days" {
-  description = "(Optional) The workspace data retention in days. Possible values are either 7 (Free Tier only) or range between 30 and 730."
-  type        = string
+  description = "The workspace data retention in days. Possible values are either 7 (Free Tier only) or range between 30 and 730."
+  type        = number
   default     = 7
 }
 
 variable "tags" {
-  description = "(Optional) A mapping of tags to assign to the resource."
-  type        = string
-  default     = null
+  description = "A mapping of tags to assign to the resource."
+  type        = map(string)
+  default     = {}
 }
