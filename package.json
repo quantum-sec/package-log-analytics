@@ -2,7 +2,7 @@
   "name": "@quantum-sec/package-log-analytics",
   "version": "0.0.0-development",
   "private": true,
-  "description": "Contains modules for deploying and managing Azure Log Analytics (LA) infrastructure.",
+  "description": "Contains modules for deploying and managing Azure Log Analytics infrastructure.",
   "repository": {
     "type": "git",
     "url": "git@github.com:quantum-sec/package-log-analytics.git"

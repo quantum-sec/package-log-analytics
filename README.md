@@ -1,6 +1,6 @@
-# package- log-analytics
+# package-log-analytics
 
-This repository contains modules for deploying and managing Azure Log Analytics Workspace that are shared across other modules or instances.
+This repository contains modules for deploying and managing Azure Log Analytics (Azure Monitor) infrastructure.
 
 ## Using a Terraform Module
 
