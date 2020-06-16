@@ -14,15 +14,15 @@ variable "resource_group_name" {
 }
 
 variable "sku" {
-  description = "The SKU that determines the class of workspace to be provisioned. Either `Free` , `Standard` , `PerGB2018` or `Premium`."
+  description = "The SKU that determines the class of workspace to be provisioned. Currently only `PerGB2018` is accepted for new workspaces."
   type        = string
-  default     = "Free"
+  default     = "PerGB2018"
 }
 
 variable "retention_in_days" {
-  description = "The workspace data retention in days. Possible values are either 7 (Free Tier only) or range between 30 and 730."
+  description = "The workspace data retention in days. Possible values are a range between 30 and 730."
   type        = number
-  default     = 7
+  default     = 31
 }
 
 variable "tags" {
