@@ -24,6 +24,6 @@ jobs:
           parameters:
             name: UpdateInfrastructureModules
             displayName: Update Infrastructure Modules
-            srcRepository: package-log-analytics.git
-            dstRepository: infrastructure-modules
+            packageName: package-log-analytics
+            repository: infrastructure-modules
             condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
