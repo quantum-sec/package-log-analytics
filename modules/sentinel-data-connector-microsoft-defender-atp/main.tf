@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------------------------------------------------------
-# DEPLOY SENTINEL DATA CONNECTOR FOR MICROSOFT DEFENDER ADVANCED THREAT PROTECTION
+# DEPLOY SENTINEL DATA CONNECTOR MICROSOFT DEFENDER FOR ENDPOINT
 # ---------------------------------------------------------------------------------------------------------------------
 
 terraform {

@@ -1,31 +1,29 @@
 variable "exchange_enabled" {
   description = "(optional)"
   type        = bool
-  default     = null
+  default     = true
 }
 
 variable "log_analytics_workspace_id" {
   description = "(required)"
   type        = string
-  nullable    = false
 }
 
 variable "name" {
   description = "(required)"
   type        = string
-  nullable    = false
 }
 
 variable "sharepoint_enabled" {
   description = "(optional)"
   type        = bool
-  default     = null
+  default     = true
 }
 
 variable "teams_enabled" {
   description = "(optional)"
   type        = bool
-  default     = null
+  default     = true
 }
 
 variable "tenant_id" {

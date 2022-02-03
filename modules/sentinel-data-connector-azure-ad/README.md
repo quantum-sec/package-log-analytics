@@ -1,3 +1,7 @@
+> Known error: "License is invalid" \
+> The documentation mentions a [prerequisite](https://docs.microsoft.com/en-us/azure/sentinel/connect-azure-active-directory#prerequisites)
+> of Azure AD P1 or P2 license, but the error exists despite meeting the license requirement
+
 ## Requirements
 
 | Name                                                                      | Version    |

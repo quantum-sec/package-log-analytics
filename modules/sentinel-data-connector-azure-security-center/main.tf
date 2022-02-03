@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------------------------------------------------------
-# DEPLOY SENTINEL DATA CONNECTOR FOR AZURE SECURITY CENTER
+# DEPLOY SENTINEL DATA CONNECTOR MICROSOFT DEFENDER FOR CLOUD
 # ---------------------------------------------------------------------------------------------------------------------
 
 terraform {

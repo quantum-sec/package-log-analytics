@@ -1,19 +1,16 @@
 variable "aws_role_arn" {
   description = "(required)"
   type        = string
-  nullable    = false
 }
 
 variable "log_analytics_workspace_id" {
   description = "(required)"
   type        = string
-  nullable    = false
 }
 
 variable "name" {
   description = "(required)"
   type        = string
-  nullable    = false
 }
 
 variable "timeouts" {

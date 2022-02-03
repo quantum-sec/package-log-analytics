@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------------------------------------------------------
-# DEPLOY SENTINEL DATA CONNECTOR FOR THREAT INTELLIGENCE
+# DEPLOY SENTINEL DATA CONNECTOR FOR THREAT INTELLIGENCE PLATFORMS
 # ---------------------------------------------------------------------------------------------------------------------
 
 terraform {

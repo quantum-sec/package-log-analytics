@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------------------------------------------------------
-# DEPLOY SENTINEL DATA CONNECTOR FOR MICROSOFT CLOUD APP SECURITY
+# DEPLOY SENTINEL DATA CONNECTOR MICROSOFT DEFENDER FOR CLOUDAPPS
 # ---------------------------------------------------------------------------------------------------------------------
 
 terraform {

@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------------------------------------------------------
-# DEPLOY SENTINEL DATA CONNECTOR FOR AZURE ADVANCED THREAT PROTECTION
+# DEPLOY SENTINEL DATA CONNECTOR MICROSOFT DEFENDER FOR IDENTITY
 # ---------------------------------------------------------------------------------------------------------------------
 
 terraform {

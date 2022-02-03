@@ -1,25 +1,23 @@
 variable "alerts_enabled" {
   description = "(optional)"
   type        = bool
-  default     = null
+  default     = true
 }
 
 variable "discovery_logs_enabled" {
   description = "(optional)"
   type        = bool
-  default     = null
+  default     = true
 }
 
 variable "log_analytics_workspace_id" {
   description = "(required)"
   type        = string
-  nullable    = false
 }
 
 variable "name" {
   description = "(required)"
   type        = string
-  nullable    = false
 }
 
 variable "tenant_id" {
