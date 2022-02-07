@@ -10,10 +10,11 @@ terraform {
 }
 
 module "data_connector_okta_sso" {
-  source       = "../sentinel-data-connector-arm-generic"
-  arm_template = "https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/Okta%20Single%20Sign-On/azuredeploy_OktaSingleSignOn_API_FunctionApp_V2.json"
-  # location - (required) is a type of string
-  location = var.location
+  source = "../sentinel-data-connector-arm-generic"
+  # arm_template - (required) is a type of string
+  arm_template = var.arm_template
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
   # name - (required) is a type of string
   name = var.name
   parameters = jsonencode({
@@ -21,21 +22,21 @@ module "data_connector_okta_sso" {
     "FunctionName" = {
       value = var.name
     }
-    # workspaceId - (required) is a type of string
+    # workspace_id - (required) is a type of string
     "WorkspaceID" = {
-      value = var.workspaceId
+      value = var.workspace_id
     }
-    # workspaceKey - (required) is a type of string
+    # workspace_key - (required) is a type of string
     "WorkspaceKey" = {
-      value = var.workspaceKey
+      value = var.workspace_key
     }
-    # apiToken - (required) is a type of string
+    # api_token - (required) is a type of string
     "APIToken" = {
-      value = var.apiToken
+      value = var.api_token
     }
-    # oktaDomain - (required) is a type of string
+    # okta_domain - (required) is a type of string
     "Uri" = {
-      value = "https://${var.oktaDomain}/api/v1/logs?since="
+      value = "https://${var.okta_domain}/api/v1/logs?since="
     }
   })
 }

@@ -10,10 +10,11 @@ terraform {
 }
 
 module "data_connector_zoom_reports" {
-  source       = "../sentinel-data-connector-arm-generic"
-  arm_template = "https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/ZoomReports/azuredeploy_Connector_ZoomAPI_AzureFunction.json"
-  # location - (required) is a type of string
-  location = var.location
+  source = "../sentinel-data-connector-arm-generic"
+  # arm_template - (required) is a type of string
+  arm_template = var.arm_template
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
   # name - (required) is a type of string
   name = var.name
   parameters = jsonencode({
@@ -21,21 +22,21 @@ module "data_connector_zoom_reports" {
     "FunctionName" = {
       value = var.name
     }
-    # workspaceId - (required) is a type of string
+    # workspace_id - (required) is a type of string
     "WorkspaceID" = {
-      value = var.workspaceId
+      value = var.workspace_id
     }
-    # workspaceKey - (required) is a type of string
+    # workspace_key - (required) is a type of string
     "WorkspaceKey" = {
-      value = var.workspaceKey
+      value = var.workspace_key
     }
-    # apiKey - (required) is a type of string
+    # api_key - (required) is a type of string
     "ZoomApiKey" = {
-      value = var.apiKey
+      value = var.api_key
     }
-    # apiSecret - (required) is a type of string
+    # api_secret - (required) is a type of string
     "ZoomApiSecret" = {
-      value = var.apiSecret
+      value = var.api_secret
     }
   })
 }

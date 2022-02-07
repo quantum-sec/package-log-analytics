@@ -10,10 +10,11 @@ terraform {
 }
 
 module "data_connector_gsuite" {
-  source       = "../sentinel-data-connector-arm-generic"
-  arm_template = "https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/GoogleWorkspaceReports/azuredeploy_Connector_GWorkspaceReportsAPI_AzureFunction.json"
-  # location - (required) is a type of string
-  location = var.location
+  source = "../sentinel-data-connector-arm-generic"
+  # arm_template - (required) is a type of string
+  arm_template = var.arm_template
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
   # name - (required) is a type of string
   name = var.name
   parameters = jsonencode({
@@ -21,17 +22,17 @@ module "data_connector_gsuite" {
     "FunctionName" = {
       value = var.name
     }
-    # workspaceId - (required) is a type of string
+    # workspace_id - (required) is a type of string
     "WorkspaceID" = {
-      value = var.workspaceId
+      value = var.workspace_id
     }
-    # workspaceKey - (required) is a type of string
+    # workspace_key - (required) is a type of string
     "WorkspaceKey" = {
-      value = var.workspaceKey
+      value = var.workspace_key
     }
-    # pickleString - (required) is a type of string
+    # pickle_string - (required) is a type of string
     "GooglePickleString" = {
-      value = var.pickleString
+      value = var.pickle_string
     }
   })
 }

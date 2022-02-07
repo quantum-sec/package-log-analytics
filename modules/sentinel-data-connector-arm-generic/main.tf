@@ -14,21 +14,14 @@ data "http" "arm_template" {
   url = var.arm_template
 }
 
-resource "azurerm_resource_group" "data_connector_rg" {
-  # location - (required) is a type of string
-  location = var.location
-  # name - (required) is a type of string
-  name = "${var.name}-rg"
-
-}
-
 resource "azurerm_resource_group_template_deployment" "data_connector_arm" {
   # name - (required) is a type of string
   name            = "${var.name}-deployment"
-  deployment_mode = "Complete" # != Incremental as RG is just for Sentinel Connector
+  deployment_mode = "Incremental"
   # parameters_content - (optional) is a type of string
-  parameters_content  = var.parameters
-  resource_group_name = azurerm_resource_group.data_connector_rg.name
+  parameters_content = var.parameters
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
   template_content    = data.http.arm_template.body
 
 }

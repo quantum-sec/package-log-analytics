@@ -1,3 +1,4 @@
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name                                                                      | Version    |
@@ -21,21 +22,20 @@ No resources.
 
 ## Inputs
 
-| Name                                                                   | Description | Type     | Default | Required |
-|------------------------------------------------------------------------|-------------|----------|---------|:--------:|
-| <a name="input_apiKey"></a> [apiKey](#input\_apiKey)                   | (required)  | `string` | n/a     |   yes    |
-| <a name="input_apiSecret"></a> [apiSecret](#input\_apiSecret)          | (required)  | `string` | n/a     |   yes    |
-| <a name="input_location"></a> [location](#input\_location)             | (required)  | `string` | n/a     |   yes    |
-| <a name="input_name"></a> [name](#input\_name)                         | (required)  | `string` | n/a     |   yes    |
-| <a name="input_workspaceId"></a> [workspaceId](#input\_workspaceId)    | (required)  | `string` | n/a     |   yes    |
-| <a name="input_workspaceKey"></a> [workspaceKey](#input\_workspaceKey) | (required)  | `string` | n/a     |   yes    |
+| Name                                                                                            | Description                                                                               | Type     | Default                                                                                                                                       | Required |
+|-------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------|:--------:|
+| <a name="input_api_key"></a> [api\_key](#input\_api\_key)                                       | Zoom API key to access audit reports                                                      | `string` | n/a                                                                                                                                           |   yes    |
+| <a name="input_api_secret"></a> [api\_secret](#input\_api\_secret)                              | Zoom API Secret to access audit reports                                                   | `string` | n/a                                                                                                                                           |   yes    |
+| <a name="input_arm_template"></a> [arm\_template](#input\_arm\_template)                        | The ARM template URL to download the template from.                                       | `string` | `"https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/ZoomReports/azuredeploy_Connector_ZoomAPI_AzureFunction.json"` |    no    |
+| <a name="input_name"></a> [name](#input\_name)                                                  | The name which should be used for this Zoom Reports Data Connector.                       | `string` | n/a                                                                                                                                           |   yes    |
+| <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | The name of the Resource Group where the Resource Group Template Deployment should exist. | `string` | n/a                                                                                                                                           |   yes    |
+| <a name="input_workspace_id"></a> [workspace\_id](#input\_workspace\_id)                        | The ID of the Log Analytics Workspace that this Zoom Reports Data Connector resides in.   | `string` | n/a                                                                                                                                           |   yes    |
+| <a name="input_workspace_key"></a> [workspace\_key](#input\_workspace\_key)                     | The key of the Log Analytics Workspace that this Zoom Reports Data Connector resides in.  | `string` | n/a                                                                                                                                           |   yes    |
 
 ## Outputs
 
-| Name                                                                                                                        | Description                                 |
-|-----------------------------------------------------------------------------------------------------------------------------|---------------------------------------------|
-| <a name="output_data_connector_zoom_reports"></a> [data\_connector\_zoom\_reports](#output\_data\_connector\_zoom\_reports) | n/a                                         |
-| <a name="output_id"></a> [id](#output\_id)                                                                                  | n/a                                         |
-| <a name="output_output_content"></a> [output\_content](#output\_output\_content)                                            | returns a string, use jsondecode() to parse |
-| <a name="output_parameters_content"></a> [parameters\_content](#output\_parameters\_content)                                | returns a string, use jsondecode() to parse |
-| <a name="output_template_content"></a> [template\_content](#output\_template\_content)                                      | returns a string, use jsondecode() to parse |
+| Name                                                                             | Description                                                     |
+|----------------------------------------------------------------------------------|-----------------------------------------------------------------|
+| <a name="output_id"></a> [id](#output\_id)                                       | The ID of the Resource Group Template Deployment.               |
+| <a name="output_output_content"></a> [output\_content](#output\_output\_content) | The JSON Content of the Outputs of the ARM Template Deployment. |
+<!-- END_TF_DOCS -->

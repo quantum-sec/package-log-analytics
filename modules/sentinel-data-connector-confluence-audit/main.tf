@@ -10,10 +10,11 @@ terraform {
 }
 
 module "data_connector_confluence_audit" {
-  source       = "../sentinel-data-connector-arm-generic"
-  arm_template = "https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/AtlassianConfluenceAudit/azuredeploy_Connector_ConfluenceAuditAPI_AzureFunction.json"
-  # location - (required) is a type of string
-  location = var.location
+  source = "../sentinel-data-connector-arm-generic"
+  # arm_template - (required) is a type of string
+  arm_template = var.arm_template
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
   # name - (required) is a type of string
   name = var.name
   parameters = jsonencode({
@@ -21,25 +22,25 @@ module "data_connector_confluence_audit" {
     "FunctionName" = {
       value = var.name
     }
-    # workspaceId - (required) is a type of string
+    # workspace_id - (required) is a type of string
     "WorkspaceID" = {
-      value = var.workspaceId
+      value = var.workspace_id
     }
-    # workspaceKey - (required) is a type of string
+    # workspace_key - (required) is a type of string
     "WorkspaceKey" = {
-      value = var.workspaceKey
+      value = var.workspace_key
     }
-    # accessToken - (required) is a type of string
+    # access_token - (required) is a type of string
     "ConfluenceAccessToken" = {
-      value = var.accessToken
+      value = var.access_token
     }
     # username - (required) is a type of string
     "ConfluenceUsername" = {
       value = var.username
     }
-    # homesiteName - (required) is a type of string
+    # homesite_name - (required) is a type of string
     "ConfluenceHomeSiteName" = {
-      value = var.homesiteName
+      value = var.homesite_name
     }
   })
 }

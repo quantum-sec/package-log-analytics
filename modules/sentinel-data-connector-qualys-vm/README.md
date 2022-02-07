@@ -1,3 +1,4 @@
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name                                                                      | Version    |
@@ -21,24 +22,23 @@ No resources.
 
 ## Inputs
 
-| Name                                                                               | Description | Type     | Default                  | Required |
-|------------------------------------------------------------------------------------|-------------|----------|--------------------------|:--------:|
-| <a name="input_filterParameters"></a> [filterParameters](#input\_filterParameters) | (optional)  | `string` | `"&truncation_limit=50"` |    no    |
-| <a name="input_location"></a> [location](#input\_location)                         | (required)  | `string` | n/a                      |   yes    |
-| <a name="input_name"></a> [name](#input\_name)                                     | (required)  | `string` | n/a                      |   yes    |
-| <a name="input_password"></a> [password](#input\_password)                         | (required)  | `string` | n/a                      |   yes    |
-| <a name="input_timeInterval"></a> [timeInterval](#input\_timeInterval)             | (optional)  | `string` | `"5"`                    |    no    |
-| <a name="input_uri"></a> [uri](#input\_uri)                                        | (required)  | `string` | n/a                      |   yes    |
-| <a name="input_username"></a> [username](#input\_username)                         | (required)  | `string` | n/a                      |   yes    |
-| <a name="input_workspaceId"></a> [workspaceId](#input\_workspaceId)                | (required)  | `string` | n/a                      |   yes    |
-| <a name="input_workspaceKey"></a> [workspaceKey](#input\_workspaceKey)             | (required)  | `string` | n/a                      |   yes    |
+| Name                                                                                            | Description                                                                               | Type     | Default                                                                                                                                   | Required |
+|-------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------|:--------:|
+| <a name="input_arm_template"></a> [arm\_template](#input\_arm\_template)                        | The ARM template URL to download the template from.                                       | `string` | `"https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/Qualys%20VM/azuredeploy_QualysVM_API_FunctionApp_V2.json"` |    no    |
+| <a name="input_filter_parameters"></a> [filter\_parameters](#input\_filter\_parameters)         | Filter parameters for Qualys audit logs                                                   | `string` | `"&truncation_limit=50"`                                                                                                                  |    no    |
+| <a name="input_name"></a> [name](#input\_name)                                                  | The name which should be used for this Qualys VM Data Connector.                          | `string` | n/a                                                                                                                                       |   yes    |
+| <a name="input_password"></a> [password](#input\_password)                                      | Qualys password for vulnerability management audit logs                                   | `string` | n/a                                                                                                                                       |   yes    |
+| <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | The name of the Resource Group where the Resource Group Template Deployment should exist. | `string` | n/a                                                                                                                                       |   yes    |
+| <a name="input_time_interval"></a> [time\_interval](#input\_time\_interval)                     | Polling time interval to fetch Qualys audit logs                                          | `string` | `"5"`                                                                                                                                     |    no    |
+| <a name="input_uri"></a> [uri](#input\_uri)                                                     | Qualys uri for vulnerability management audit logs                                        | `string` | n/a                                                                                                                                       |   yes    |
+| <a name="input_username"></a> [username](#input\_username)                                      | Qualys username for vulnerability management audit logs                                   | `string` | n/a                                                                                                                                       |   yes    |
+| <a name="input_workspace_id"></a> [workspace\_id](#input\_workspace\_id)                        | The ID of the Log Analytics Workspace that this Qualys VM Data Connector resides in.      | `string` | n/a                                                                                                                                       |   yes    |
+| <a name="input_workspace_key"></a> [workspace\_key](#input\_workspace\_key)                     | The key of the Log Analytics Workspace that this Qualys VM Data Connector resides in.     | `string` | n/a                                                                                                                                       |   yes    |
 
 ## Outputs
 
-| Name                                                                                                               | Description                                 |
-|--------------------------------------------------------------------------------------------------------------------|---------------------------------------------|
-| <a name="output_data_connector_qualys_vm"></a> [data\_connector\_qualys\_vm](#output\_data\_connector\_qualys\_vm) | n/a                                         |
-| <a name="output_id"></a> [id](#output\_id)                                                                         | n/a                                         |
-| <a name="output_output_content"></a> [output\_content](#output\_output\_content)                                   | returns a string, use jsondecode() to parse |
-| <a name="output_parameters_content"></a> [parameters\_content](#output\_parameters\_content)                       | returns a string, use jsondecode() to parse |
-| <a name="output_template_content"></a> [template\_content](#output\_template\_content)                             | returns a string, use jsondecode() to parse |
+| Name                                                                             | Description                                                     |
+|----------------------------------------------------------------------------------|-----------------------------------------------------------------|
+| <a name="output_id"></a> [id](#output\_id)                                       | The ID of the Resource Group Template Deployment.               |
+| <a name="output_output_content"></a> [output\_content](#output\_output\_content) | The JSON Content of the Outputs of the ARM Template Deployment. |
+<!-- END_TF_DOCS -->

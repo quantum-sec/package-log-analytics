@@ -10,10 +10,11 @@ terraform {
 }
 
 module "data_connector_qualys_vm" {
-  source       = "../sentinel-data-connector-arm-generic"
-  arm_template = "https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/Qualys%20VM/azuredeploy_QualysVM_API_FunctionApp_V2.json"
-  # location - (required) is a type of string
-  location = var.location
+  source = "../sentinel-data-connector-arm-generic"
+  # arm_template - (required) is a type of string
+  arm_template = var.arm_template
+  # resource_group_name - (required) is a type of string
+  resource_group_name = var.resource_group_name
   # name - (required) is a type of string
   name = var.name
   parameters = jsonencode({
@@ -21,13 +22,13 @@ module "data_connector_qualys_vm" {
     "FunctionName" = {
       value = var.name
     }
-    # workspaceId - (required) is a type of string
+    # workspace_id - (required) is a type of string
     "WorkspaceID" = {
-      value = var.workspaceId
+      value = var.workspace_id
     }
-    # workspaceKey - (required) is a type of string
+    # workspace_key - (required) is a type of string
     "WorkspaceKey" = {
-      value = var.workspaceKey
+      value = var.workspace_key
     }
     # username - (required) is a type of string
     "APIUsername" = {
@@ -41,13 +42,13 @@ module "data_connector_qualys_vm" {
     "Uri" = {
       value = var.uri
     }
-    # filterParameters - (optional) is a type of string
+    # filter_parameters - (optional) is a type of string
     "FilterParameters" = {
-      value = var.filterParameters
+      value = var.filter_parameters
     }
-    # timeInterval - (optional) is a type of string
+    # time_interval - (optional) is a type of string
     "TimeInterval" = {
-      value = var.timeInterval
+      value = var.time_interval
     }
   })
 }
