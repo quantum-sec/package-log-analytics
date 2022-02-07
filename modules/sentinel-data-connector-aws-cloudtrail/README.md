@@ -1,3 +1,4 @@
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name                                                                      | Version    |
@@ -23,16 +24,16 @@ No modules.
 
 ## Inputs
 
-| Name                                                                                                                   | Description                                             | Type                                                                                                                                                 | Default | Required |
-|------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|---------|:--------:|
-| <a name="input_aws_role_arn"></a> [aws\_role\_arn](#input\_aws\_role\_arn)                                             | (required)                                              | `string`                                                                                                                                             | n/a     |   yes    |
-| <a name="input_log_analytics_workspace_id"></a> [log\_analytics\_workspace\_id](#input\_log\_analytics\_workspace\_id) | (required)                                              | `string`                                                                                                                                             | n/a     |   yes    |
-| <a name="input_name"></a> [name](#input\_name)                                                                         | (required)                                              | `string`                                                                                                                                             | n/a     |   yes    |
-| <a name="input_timeouts"></a> [timeouts](#input\_timeouts)                                                             | nested block: NestingSingle, min items: 0, max items: 0 | <pre>set(object(<br>    {<br>      create = string<br>      delete = string<br>      read   = string<br>      update = string<br>    }<br>  ))</pre> | `[]`    |    no    |
+| Name                                                                                                                   | Description                                                                                   | Type                                                                                                                                                 | Default | Required |
+|------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|---------|:--------:|
+| <a name="input_aws_role_arn"></a> [aws\_role\_arn](#input\_aws\_role\_arn)                                             | The ARN of the AWS CloudTrail role, which is connected to this AWS CloudTrail Data Connector. | `string`                                                                                                                                             | n/a     |   yes    |
+| <a name="input_log_analytics_workspace_id"></a> [log\_analytics\_workspace\_id](#input\_log\_analytics\_workspace\_id) | The ID of the Log Analytics Workspace that this AWS CloudTrail Data Connector resides in.     | `string`                                                                                                                                             | n/a     |   yes    |
+| <a name="input_name"></a> [name](#input\_name)                                                                         | The name which should be used for this AWS CloudTrail Data Connector.                         | `string`                                                                                                                                             | n/a     |   yes    |
+| <a name="input_timeouts"></a> [timeouts](#input\_timeouts)                                                             | nested block: NestingSingle, min items: 0, max items: 0                                       | <pre>set(object(<br>    {<br>      create = string<br>      delete = string<br>      read   = string<br>      update = string<br>    }<br>  ))</pre> | `[]`    |    no    |
 
 ## Outputs
 
-| Name                                                                                                                              | Description |
-|-----------------------------------------------------------------------------------------------------------------------------------|-------------|
-| <a name="output_data_connector_aws_cloudtrail"></a> [data\_connector\_aws\_cloudtrail](#output\_data\_connector\_aws\_cloudtrail) | n/a         |
-| <a name="output_id"></a> [id](#output\_id)                                                                                        | n/a         |
+| Name                                       | Description                                  |
+|--------------------------------------------|----------------------------------------------|
+| <a name="output_id"></a> [id](#output\_id) | The ID of the AWS CloudTrail Data Connector. |
+<!-- END_TF_DOCS -->
