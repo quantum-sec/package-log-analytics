@@ -29,7 +29,6 @@ No modules.
 | <a name="input_log_analytics_workspace_id"></a> [log\_analytics\_workspace\_id](#input\_log\_analytics\_workspace\_id) | The ID of the Log Analytics Workspace that this Azure Security Center Data Connector resides in. | `string`                                                                                                                    | n/a     |   yes    |
 | <a name="input_name"></a> [name](#input\_name)                                                                         | The name which should be used for this Azure Security Center Data Connector.                     | `string`                                                                                                                    | n/a     |   yes    |
 | <a name="input_subscription_id"></a> [subscription\_id](#input\_subscription\_id)                                      | The ID of the subscription that this Azure Security Center Data Connector connects to.           | `string`                                                                                                                    | `null`  |    no    |
-| <a name="input_timeouts"></a> [timeouts](#input\_timeouts)                                                             | nested block: NestingSingle, min items: 0, max items: 0                                          | <pre>set(object(<br>    {<br>      create = string<br>      delete = string<br>      read   = string<br>    }<br>  ))</pre> | `[]`    |    no    |
 
 ## Outputs
 

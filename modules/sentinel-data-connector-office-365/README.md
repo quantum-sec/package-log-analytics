@@ -32,7 +32,6 @@ No modules.
 | <a name="input_sharepoint_enabled"></a> [sharepoint\_enabled](#input\_sharepoint\_enabled)                             | Should the SharePoint data connector be enabled?                                      | `bool`                                                                                                                                               | `true`  |    no    |
 | <a name="input_teams_enabled"></a> [teams\_enabled](#input\_teams\_enabled)                                            | Should the Microsoft Teams data connector be enabled?                                 | `bool`                                                                                                                                               | `true`  |    no    |
 | <a name="input_tenant_id"></a> [tenant\_id](#input\_tenant\_id)                                                        | The ID of the Tenant that this Office 365 Data Connector connects to.                 | `string`                                                                                                                                             | `null`  |    no    |
-| <a name="input_timeouts"></a> [timeouts](#input\_timeouts)                                                             | nested block: NestingSingle, min items: 0, max items: 0                               | <pre>set(object(<br>    {<br>      create = string<br>      delete = string<br>      read   = string<br>      update = string<br>    }<br>  ))</pre> | `[]`    |    no    |
 
 ## Outputs
 

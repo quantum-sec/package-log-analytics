@@ -12,16 +12,3 @@ variable "name" {
   description = "The name which should be used for this AWS CloudTrail Data Connector."
   type        = string
 }
-
-variable "timeouts" {
-  description = "nested block: NestingSingle, min items: 0, max items: 0"
-  type = set(object(
-    {
-      create = string
-      delete = string
-      read   = string
-      update = string
-    }
-  ))
-  default = []
-}

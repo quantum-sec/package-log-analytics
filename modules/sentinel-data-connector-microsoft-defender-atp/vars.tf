@@ -13,15 +13,3 @@ variable "tenant_id" {
   type        = string
   default     = null
 }
-
-variable "timeouts" {
-  description = "nested block: NestingSingle, min items: 0, max items: 0"
-  type = set(object(
-    {
-      create = string
-      delete = string
-      read   = string
-    }
-  ))
-  default = []
-}
