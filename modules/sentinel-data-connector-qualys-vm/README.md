@@ -24,7 +24,7 @@ No resources.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_arm_template"></a> [arm\_template](#input\_arm\_template) | The ARM template URL to download the template from. | `string` | `"https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/Qualys%20VM/azuredeploy_QualysVM_API_FunctionApp_V2.json?ref=b6cb23d"` | no |
+| <a name="input_arm_template"></a> [arm\_template](#input\_arm\_template) | The ARM template URL to download the template from. | `string` | `"https://raw.githubusercontent.com/Azure/Azure-Sentinel/b6cb23d9ff4dfa7943d548bd464b2bb13d9e9637/DataConnectors/Qualys%20VM/azuredeploy_QualysVM_API_FunctionApp_V2.json"` | no |
 | <a name="input_filter_parameters"></a> [filter\_parameters](#input\_filter\_parameters) | Filter parameters for Qualys audit logs | `string` | `"&truncation_limit=50"` | no |
 | <a name="input_name"></a> [name](#input\_name) | The name which should be used for this Qualys VM Data Connector. | `string` | n/a | yes |
 | <a name="input_password"></a> [password](#input\_password) | Qualys password for vulnerability management audit logs | `string` | n/a | yes |

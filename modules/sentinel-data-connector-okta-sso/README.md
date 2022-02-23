@@ -25,7 +25,7 @@ No resources.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_api_token"></a> [api\_token](#input\_api\_token) | Okta API Token for access to audit data | `string` | n/a | yes |
-| <a name="input_arm_template"></a> [arm\_template](#input\_arm\_template) | The ARM template URL to download the template from. | `string` | `"https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/Okta%20Single%20Sign-On/azuredeploy_OktaSingleSignOn_API_FunctionApp_V2.json?ref=9422a1c"` | no |
+| <a name="input_arm_template"></a> [arm\_template](#input\_arm\_template) | The ARM template URL to download the template from. | `string` | `"https://raw.githubusercontent.com/Azure/Azure-Sentinel/9422a1c90600b834619d1c570653f7ec24530155/DataConnectors/Okta%20Single%20Sign-On/azuredeploy_OktaSingleSignOn_API_FunctionApp_V2.json"` | no |
 | <a name="input_name"></a> [name](#input\_name) | The name which should be used for this Okta SSO Data Connector. | `string` | n/a | yes |
 | <a name="input_okta_domain"></a> [okta\_domain](#input\_okta\_domain) | Okta API Token for access to audit data | `string` | n/a | yes |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | The name of the Resource Group where the Resource Group Template Deployment should exist. | `string` | n/a | yes |

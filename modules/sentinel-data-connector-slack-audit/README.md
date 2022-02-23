@@ -25,7 +25,7 @@ No resources.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_api_bearer_token"></a> [api\_bearer\_token](#input\_api\_bearer\_token) | Slack API Bearer Token to access audit logs | `string` | n/a | yes |
-| <a name="input_arm_template"></a> [arm\_template](#input\_arm\_template) | The ARM template URL to download the template from. | `string` | `"https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Solutions/SlackAudit/Data%20Connectors/azuredeploy_Connector_SlackAuditAPI_AzureFunction.json?ref=135bcce"` | no |
+| <a name="input_arm_template"></a> [arm\_template](#input\_arm\_template) | The ARM template URL to download the template from. | `string` | `"https://raw.githubusercontent.com/Azure/Azure-Sentinel/135bcce714b0c92a310899c1a8061c95abd08b28/Solutions/SlackAudit/Data%20Connectors/azuredeploy_Connector_SlackAuditAPI_AzureFunction.json"` | no |
 | <a name="input_name"></a> [name](#input\_name) | The name which should be used for this Slack Audit Data Connector. | `string` | n/a | yes |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | The name of the Resource Group where the Resource Group Template Deployment should exist. | `string` | n/a | yes |
 | <a name="input_workspace_id"></a> [workspace\_id](#input\_workspace\_id) | The ID of the Log Analytics Workspace that this Slack Audit Data Connector resides in. | `string` | n/a | yes |

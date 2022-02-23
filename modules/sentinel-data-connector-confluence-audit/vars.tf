@@ -15,7 +15,7 @@ variable "resource_group_name" {
 variable "arm_template" {
   description = "The ARM template URL to download the template from."
   type        = string
-  default     = "https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/AtlassianConfluenceAudit/azuredeploy_Connector_ConfluenceAuditAPI_AzureFunction.json?ref=9218a88"
+  default     = "https://raw.githubusercontent.com/Azure/Azure-Sentinel/9218a8839d6b8b2d95ee426b97a7f1fd6744ae45/DataConnectors/AtlassianConfluenceAudit/azuredeploy_Connector_ConfluenceAuditAPI_AzureFunction.json"
 }
 
 variable "workspace_id" {

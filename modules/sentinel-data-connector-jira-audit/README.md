@@ -25,7 +25,7 @@ No resources.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_access_token"></a> [access\_token](#input\_access\_token) | Jira access\_token for audit stream | `string` | n/a | yes |
-| <a name="input_arm_template"></a> [arm\_template](#input\_arm\_template) | The ARM template URL to download the template from. | `string` | `"https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/AtlassianJiraAudit/azuredeploy_Connector_JiraAuditAPI_AzureFunction.json?ref=9218a88"` | no |
+| <a name="input_arm_template"></a> [arm\_template](#input\_arm\_template) | The ARM template URL to download the template from. | `string` | `"https://raw.githubusercontent.com/Azure/Azure-Sentinel/9218a8839d6b8b2d95ee426b97a7f1fd6744ae45/DataConnectors/AtlassianJiraAudit/azuredeploy_Connector_JiraAuditAPI_AzureFunction.json"` | no |
 | <a name="input_homesite_name"></a> [homesite\_name](#input\_homesite\_name) | https://HOMESITENAME.atlassian.net | `string` | n/a | yes |
 | <a name="input_name"></a> [name](#input\_name) | The name which should be used for this Jira Audit Data Connector. | `string` | n/a | yes |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | The name of the Resource Group where the Resource Group Template Deployment should exist. | `string` | n/a | yes |

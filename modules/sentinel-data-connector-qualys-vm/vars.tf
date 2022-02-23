@@ -15,7 +15,7 @@ variable "resource_group_name" {
 variable "arm_template" {
   description = "The ARM template URL to download the template from."
   type        = string
-  default     = "https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/Qualys%20VM/azuredeploy_QualysVM_API_FunctionApp_V2.json?ref=b6cb23d"
+  default     = "https://raw.githubusercontent.com/Azure/Azure-Sentinel/b6cb23d9ff4dfa7943d548bd464b2bb13d9e9637/DataConnectors/Qualys%20VM/azuredeploy_QualysVM_API_FunctionApp_V2.json"
 }
 
 variable "workspace_id" {
