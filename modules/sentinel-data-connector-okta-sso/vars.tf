@@ -15,7 +15,7 @@ variable "resource_group_name" {
 variable "arm_template" {
   description = "The ARM template URL to download the template from."
   type        = string
-  default     = "https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/Okta%20Single%20Sign-On/azuredeploy_OktaSingleSignOn_API_FunctionApp_V2.json"
+  default     = "https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/Okta%20Single%20Sign-On/azuredeploy_OktaSingleSignOn_API_FunctionApp_V2.json?ref=9422a1c"
 }
 
 variable "workspace_id" {

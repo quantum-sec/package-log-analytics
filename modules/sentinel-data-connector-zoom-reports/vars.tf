@@ -15,7 +15,7 @@ variable "resource_group_name" {
 variable "arm_template" {
   description = "The ARM template URL to download the template from."
   type        = string
-  default     = "https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/ZoomReports/azuredeploy_Connector_ZoomAPI_AzureFunction.json"
+  default     = "https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/ZoomReports/azuredeploy_Connector_ZoomAPI_AzureFunction.json?ref=bf94fa7"
 }
 
 variable "workspace_id" {

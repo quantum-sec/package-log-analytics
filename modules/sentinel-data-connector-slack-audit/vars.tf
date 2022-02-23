@@ -15,7 +15,7 @@ variable "resource_group_name" {
 variable "arm_template" {
   description = "The ARM template URL to download the template from."
   type        = string
-  default     = "https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Solutions/SlackAudit/Data%20Connectors/azuredeploy_Connector_SlackAuditAPI_AzureFunction.json"
+  default     = "https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Solutions/SlackAudit/Data%20Connectors/azuredeploy_Connector_SlackAuditAPI_AzureFunction.json?ref=135bcce"
 }
 
 variable "workspace_id" {
