@@ -29,7 +29,7 @@ No resources.
 | <a name="input_item_search_key"></a> [item\_search\_key](#input\_item\_search\_key) | The key used to optimize query performance when using Watchlist for joins with other data. | `string` | n/a | yes |
 | <a name="input_log_analytics_workspace_id"></a> [log\_analytics\_workspace\_id](#input\_log\_analytics\_workspace\_id) | The ID of the Log Analytics Workspace where this Sentinel Watchlist resides in. | `string` | n/a | yes |
 | <a name="input_name"></a> [name](#input\_name) | The name which should be used for this Sentinel Watchlist. | `string` | n/a | yes |
-| <a name="input_properties"></a> [properties](#input\_properties) | The key value pairs of the Sentinel Watchlist Item. | `list(map(string))` | n/a | yes |
+| <a name="input_properties"></a> [properties](#input\_properties) | The key value pairs of the Sentinel Watchlist Item. | `list(map(string))` | `[]` | no |
 
 ## Outputs
 
