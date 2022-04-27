@@ -22,4 +22,5 @@ variable "description" {
 variable "properties" {
   description = "The key value pairs of the Sentinel Watchlist Item."
   type        = list(map(string))
+  default     = []
 }
