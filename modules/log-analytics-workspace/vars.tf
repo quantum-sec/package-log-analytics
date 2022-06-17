@@ -14,7 +14,7 @@ variable "resource_group_name" {
 }
 
 variable "sku" {
-  description = "The SKU that determines the class of workspace to be provisioned. Currently only `PerGB2018` is accepted for new workspaces."
+  description = "Specifies the SKU of the Log Analytics Workspace."
   type        = string
   default     = null
 }
