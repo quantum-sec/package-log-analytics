@@ -13,11 +13,6 @@ output "workspace_id" {
   value       = azurerm_log_analytics_workspace.workspace.workspace_id
 }
 
-output "portal_url" {
-  description = "The Portal URL for the Log Analytics workspace."
-  value       = azurerm_log_analytics_workspace.workspace.portal_url
-}
-
 output "primary_shared_key" {
   description = "The primary shared key for accessing and managing the Log Analytics workspace."
   value       = azurerm_log_analytics_workspace.workspace.primary_shared_key
