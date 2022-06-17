@@ -16,7 +16,7 @@ variable "resource_group_name" {
 variable "sku" {
   description = "The SKU that determines the class of workspace to be provisioned. Currently only `PerGB2018` is accepted for new workspaces."
   type        = string
-  default     = "PerGB2018"
+  default     = null
 }
 
 variable "retention_in_days" {
@@ -28,5 +28,5 @@ variable "retention_in_days" {
 variable "tags" {
   description = "A mapping of tags to assign to the resource."
   type        = map(string)
-  default     = {}
+  default     = null
 }
