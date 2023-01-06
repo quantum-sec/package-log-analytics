@@ -6,10 +6,14 @@ terraform {
   required_version = ">= 0.12.26"
   required_providers {
     azurerm = ">= 2.54.0"
+    http    = ">= 3.2.1"
   }
 }
 
 data "http" "arm_template" {
+  required_providers {
+    http = ">= 3.2.1"
+  }
   url = var.arm_template
 }
 
