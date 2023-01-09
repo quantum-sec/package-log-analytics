@@ -11,9 +11,6 @@ terraform {
 }
 
 data "http" "arm_template" {
-  required_providers {
-    http = ">= 3.2.1"
-  }
   url = var.arm_template
 }
 
