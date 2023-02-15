@@ -18,4 +18,9 @@ resource "azurerm_subscription_policy_assignment" "this" {
   subscription_id      = var.subscription_id
 
   parameters = var.parameters
+  location   = var.location
+
+  identity {
+    type = "SystemAssigned"
+  }
 }

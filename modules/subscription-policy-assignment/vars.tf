@@ -18,3 +18,8 @@ variable "parameters" {
   type        = string
   default     = "{}"
 }
+
+variable "location" {
+  description = "The Azure Region where the Policy Assignment should exist"
+  type        = string
+}
