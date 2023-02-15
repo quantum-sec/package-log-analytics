@@ -12,3 +12,9 @@ variable "policy_definition_id" {
   description = "The ID of the Policy Definition of Policy Definition Set."
   type        = string
 }
+
+variable "parameters" {
+  description = "A JSON mapping of any Parameters for this Policy."
+  type        = string
+  default     = "{}"
+}
