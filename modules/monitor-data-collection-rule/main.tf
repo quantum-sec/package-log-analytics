@@ -8,6 +8,10 @@ terraform {
       source  = "hashicorp/azurerm"
       version = "~> 3.53"
     }
+    null = {
+      source  = "hashicorp/null"
+      version = "~> 3.2"
+    }
   }
   required_version = ">= 0.12"
   experiments      = [module_variable_optional_attrs]
@@ -221,9 +225,23 @@ resource "azurerm_monitor_data_collection_rule" "dcr" {
   }
 }
 
-resource "azurerm_monitor_data_collection_rule_association" "dcr_association" {
-  name                    = "${var.name}-association"
-  description             = var.description
-  target_resource_id      = var.target_resource_id
-  data_collection_rule_id = azurerm_monitor_data_collection_rule.dcr.id
+# azurerm_monitor_data_collection_rule_association doesn't support resource of type
+# 'Microsoft.OperationalInsights/workspaces'
+# https://github.com/hashicorp/terraform-provider-azurerm/issues/20637
+
+#resource "azurerm_monitor_data_collection_rule_association" "dcr_association" {
+#  name                    = "${var.name}-association"
+#  description             = var.description
+#  target_resource_id      = var.target_resource_id
+#  data_collection_rule_id = azurerm_monitor_data_collection_rule.dcr.id
+#}
+
+# TODO: add validations for resource_group_name and target_resource_id to prevent potential CLI injection.
+resource "null_resource" "dcr_association" {
+  provisioner "local-exec" {
+    command = "az monitor log-analytics workspace update --resource-group ${var.resource_group_name} --workspace-name ${var.target_resource_id} --data-collection-rule \"${azurerm_monitor_data_collection_rule.dcr.id}\""
+  }
+  depends_on = [
+    azurerm_monitor_data_collection_rule.dcr
+  ]
 }
