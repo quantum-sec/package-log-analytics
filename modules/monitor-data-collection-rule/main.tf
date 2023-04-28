@@ -139,7 +139,7 @@ resource "azurerm_monitor_data_collection_rule" "dcr" {
 
   destinations {
     dynamic "azure_monitor_metrics" {
-      for_each = [var.destinations["azure_monitor_metrics"]] != null ? [var.destinations["azure_monitor_metrics"]] : []
+      for_each = var.destinations["azure_monitor_metrics"] != null ? [var.destinations["azure_monitor_metrics"]] : []
       content {
         name = azure_monitor_metrics.value["name"]
       }
