@@ -21,7 +21,7 @@ variable "target_resource_id" {
 variable "kind" {
   type        = string
   description = "The kind of the Data Collection Rule."
-  default     = ""
+  default     = null
 }
 
 variable "description" {
