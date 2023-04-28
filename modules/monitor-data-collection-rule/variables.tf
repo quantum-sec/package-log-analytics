@@ -102,7 +102,7 @@ variable "data_sources" {
       streams = list(string)
     })))
   })
-  description = "A data_sources block as defined below."
+  description = "A data_sources block."
   default     = {}
   # TODO: add variable validations
 }
@@ -115,7 +115,7 @@ variable "data_flow" {
     output_stream      = optional(string)
     transform_kql      = optional(string)
   }))
-  description = "One or more data_flow blocks as defined below."
+  description = "One or more data_flow blocks."
 }
 
 variable "destinations" {
@@ -155,7 +155,7 @@ variable "destinations" {
       storage_account_id = string
     })))
   })
-  description = "A destinations block as defined below"
+  description = "A destinations block."
   # TODO: add variable validations
 }
 
@@ -168,7 +168,7 @@ variable "stream_declaration" {
     }))
   })
   default     = null
-  description = "A stream_declaration block as defined below."
+  description = "A stream_declaration block."
 }
 
 variable "identity" {
@@ -177,5 +177,5 @@ variable "identity" {
     identity_ids = optional(list(string))
   })
   default     = null
-  description = "An identity block as defined below."
+  description = "An identity block."
 }
