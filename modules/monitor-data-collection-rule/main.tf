@@ -237,6 +237,8 @@ resource "azurerm_monitor_data_collection_rule" "dcr" {
 #}
 
 # TODO: add validations for resource_group_name and target_resource_id to prevent potential CLI injection.
+# DCR needs to be linked to a Log Analytics workspace
+# https://learn.microsoft.com/en-gb/azure/azure-monitor/logs/tutorial-workspace-transformations-api#link-workspace-to-dcr
 resource "null_resource" "dcr_association" {
   provisioner "local-exec" {
     command = "az monitor log-analytics workspace update --resource-group ${var.resource_group_name} --workspace-name ${var.target_resource_id} --data-collection-rule \"${azurerm_monitor_data_collection_rule.dcr.id}\""
