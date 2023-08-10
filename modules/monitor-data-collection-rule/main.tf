@@ -13,7 +13,7 @@ terraform {
       version = "~> 3.2"
     }
   }
-  required_version = ">= 0.12"
+  required_version = ">= 1.2"
   experiments      = [module_variable_optional_attrs]
 }
 
