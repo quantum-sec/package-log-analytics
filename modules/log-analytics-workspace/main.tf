@@ -9,7 +9,7 @@ terraform {
       version = "~> 3.34"
     }
   }
-  required_version = ">= 0.12"
+  required_version = ">= 1.2"
 }
 
 resource "azurerm_log_analytics_workspace" "workspace" {

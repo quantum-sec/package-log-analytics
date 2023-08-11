@@ -9,7 +9,7 @@ terraform {
       version = "~> 3.34"
     }
   }
-  required_version = ">= 0.12.26"
+  required_version = ">= 1.2"
 }
 
 resource "azurerm_log_analytics_saved_search" "search" {
