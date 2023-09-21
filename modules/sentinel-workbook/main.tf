@@ -19,25 +19,19 @@ terraform {
 }
 
 locals {
-  root_dir         = coalesce(var.content_path_workbooks, "${path.module}/../../content/workbooks")
-  workbook_content = file("${local.root_dir}/${var.name}.json")
-  arm_script       = file("${path.module}/azuredeploy.json")
-
   parameters_override = merge({
     workbookType        = "sentinel",
     workbookSourceId    = var.workbook_source_id,
     workbookDisplayName = var.name,
-    workbookContent     = local.workbook_content,
+    workbookContent     = var.workbook_content,
   })
-
   parameters_md5 = md5(jsonencode(local.parameters_override))
-  template_md5   = md5(data.template_file.template.rendered)
 }
 
 data "template_file" "template" {
   # This function is needed as we added ignore_changes to parameters inside lifecycle, for reference see the link below.
   # https://github.com/quantum-sec/package-azure/blob/e33ccef7619dceea456d5e27bbb0246aca600085/modules/azure-arm-deployment/main.tf#L18-L23
-  template = local.arm_script
+  template = file("${path.module}/azuredeploy.json")
   vars = {
     parameters_md5 = local.parameters_md5
   }
@@ -46,7 +40,7 @@ data "template_file" "template" {
 resource "null_resource" "parameters" {
   triggers = {
     md5          = local.parameters_md5
-    template_md5 = local.template_md5
+    template_md5 = md5(data.template_file.template.rendered)
   }
 }
 
