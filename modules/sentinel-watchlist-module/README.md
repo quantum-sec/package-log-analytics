@@ -8,25 +8,29 @@
 
 ## Providers
 
-No providers.
+| Name | Version |
+|------|---------|
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | >= 3.2.0 |
 
 ## Modules
 
-| Name | Source | Version |
-|------|--------|---------|
-| <a name="module_watchlist"></a> [watchlist](#module\_watchlist) | ../sentinel-watchlist | n/a |
-| <a name="module_watchlist_item"></a> [watchlist\_item](#module\_watchlist\_item) | ../sentinel-watchlist-item | n/a |
+No modules.
 
 ## Resources
 
-No resources.
+| Name | Type |
+|------|------|
+| [azurerm_sentinel_watchlist.watchlist](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/sentinel_watchlist) | resource |
+| [azurerm_sentinel_watchlist_item.watchlist_item](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/sentinel_watchlist_item) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_default_duration"></a> [default\_duration](#input\_default\_duration) | The key used to optimize query performance when using Watchlist for joins with other data. | `string` | `null` | no |
 | <a name="input_description"></a> [description](#input\_description) | The description of this Sentinel Watchlist. | `string` | `null` | no |
 | <a name="input_item_search_key"></a> [item\_search\_key](#input\_item\_search\_key) | The key used to optimize query performance when using Watchlist for joins with other data. | `string` | n/a | yes |
+| <a name="input_labels"></a> [labels](#input\_labels) | The description of this Sentinel Watchlist. | `list(string)` | `null` | no |
 | <a name="input_log_analytics_workspace_id"></a> [log\_analytics\_workspace\_id](#input\_log\_analytics\_workspace\_id) | The ID of the Log Analytics Workspace where this Sentinel Watchlist resides in. | `string` | n/a | yes |
 | <a name="input_name"></a> [name](#input\_name) | The name which should be used for this Sentinel Watchlist. | `string` | n/a | yes |
 | <a name="input_properties"></a> [properties](#input\_properties) | The key value pairs of the Sentinel Watchlist Item. | `list(map(string))` | `[]` | no |

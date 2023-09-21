@@ -9,17 +9,18 @@ terraform {
   }
 }
 
-module "watchlist" {
-  source                     = "../sentinel-watchlist"
+resource "azurerm_sentinel_watchlist" "watchlist" {
   name                       = var.name
   log_analytics_workspace_id = var.log_analytics_workspace_id
+  display_name               = var.name
   description                = var.description
   item_search_key            = var.item_search_key
+  default_duration           = var.default_duration
+  labels                     = var.labels
 }
 
-module "watchlist_item" {
+resource "azurerm_sentinel_watchlist_item" "watchlist_item" {
   for_each     = { for index, elem in var.properties : index => elem }
-  source       = "../sentinel-watchlist-item"
-  watchlist_id = module.watchlist.id
+  watchlist_id = azurerm_sentinel_watchlist.watchlist.id
   properties   = each.value
 }

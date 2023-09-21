@@ -24,3 +24,15 @@ variable "properties" {
   type        = list(map(string))
   default     = []
 }
+
+variable "default_duration" {
+  description = "The key used to optimize query performance when using Watchlist for joins with other data."
+  type        = string
+  default     = null
+}
+
+variable "labels" {
+  description = "The description of this Sentinel Watchlist."
+  type        = list(string)
+  default     = null
+}

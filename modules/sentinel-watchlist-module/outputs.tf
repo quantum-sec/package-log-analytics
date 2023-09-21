@@ -1,9 +1,9 @@
 output "id" {
   description = "The ID of the Sentinel Watchlist."
-  value       = module.watchlist.id
+  value       = azurerm_sentinel_watchlist.watchlist.id
 }
 
 output "items_id" {
   description = "The ID of the Sentinel Watchlist Item."
-  value       = values(module.watchlist_item)[*].id
+  value       = values(azurerm_sentinel_watchlist_item.watchlist_item)[*].id
 }
