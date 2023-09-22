@@ -21,6 +21,7 @@ No modules.
 | Name | Type |
 |------|------|
 | [azurerm_sentinel_watchlist.watchlist](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/sentinel_watchlist) | resource |
+| [azurerm_sentinel_watchlist_item.watchlist_item](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/sentinel_watchlist_item) | resource |
 
 ## Inputs
 
@@ -32,10 +33,12 @@ No modules.
 | <a name="input_labels"></a> [labels](#input\_labels) | The description of this Sentinel Watchlist. | `list(string)` | `null` | no |
 | <a name="input_log_analytics_workspace_id"></a> [log\_analytics\_workspace\_id](#input\_log\_analytics\_workspace\_id) | The ID of the Log Analytics Workspace where this Sentinel Watchlist resides in. | `string` | n/a | yes |
 | <a name="input_name"></a> [name](#input\_name) | The name which should be used for this Sentinel Watchlist. | `string` | n/a | yes |
+| <a name="input_properties"></a> [properties](#input\_properties) | The key value pairs of the Sentinel Watchlist Item. | `list(map(string))` | `[]` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
 | <a name="output_id"></a> [id](#output\_id) | The ID of the Sentinel Watchlist. |
+| <a name="output_items_id"></a> [items\_id](#output\_items\_id) | The ID of the Sentinel Watchlist Item. |
 <!-- END_TF_DOCS -->
