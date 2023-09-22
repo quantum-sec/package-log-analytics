@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------------------------------------------------------
-# DEPLOY A MICROSOFT SENTINEL WATCHLIST
+# DEPLOY A MICROSOFT SENTINEL WATCHLIST + WATCHLIST ITEMS
 # ---------------------------------------------------------------------------------------------------------------------
 
 terraform {
@@ -17,4 +17,10 @@ resource "azurerm_sentinel_watchlist" "watchlist" {
   item_search_key            = var.item_search_key
   default_duration           = var.default_duration
   labels                     = var.labels
+}
+
+resource "azurerm_sentinel_watchlist_item" "watchlist_item" {
+  for_each     = var.properties
+  watchlist_id = azurerm_sentinel_watchlist.watchlist.id
+  properties   = each.value
 }

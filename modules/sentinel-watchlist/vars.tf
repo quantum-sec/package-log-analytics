@@ -19,6 +19,12 @@ variable "description" {
   default     = null
 }
 
+variable "properties" {
+  description = "The key value pairs of the Sentinel Watchlist Item."
+  type        = list(map(string))
+  default     = []
+}
+
 variable "default_duration" {
   description = "The key used to optimize query performance when using Watchlist for joins with other data."
   type        = string
