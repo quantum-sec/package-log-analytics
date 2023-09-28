@@ -20,7 +20,7 @@ resource "azurerm_sentinel_watchlist" "watchlist" {
 }
 
 resource "azurerm_sentinel_watchlist_item" "watchlist_item" {
-  for_each     = var.properties
+  for_each     = { for index, elem in var.properties : index => elem }
   watchlist_id = azurerm_sentinel_watchlist.watchlist.id
   properties   = each.value
 }
