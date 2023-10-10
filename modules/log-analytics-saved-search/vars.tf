@@ -3,12 +3,6 @@ variable "name" {
   type        = string
 }
 
-variable "display_name" {
-  description = "The friendly display name of the saved search."
-  type        = string
-  default     = null
-}
-
 variable "category" {
   description = "The category under which the saved search will be displayed."
   type        = string
@@ -22,12 +16,6 @@ variable "log_analytics_workspace_id" {
 variable "query" {
   description = "The KQL query for the saved search."
   type        = string
-}
-
-variable "function_alias" {
-  description = "The function alias if the query serves as a function."
-  type        = string
-  default     = null
 }
 
 variable "function_parameters" {
