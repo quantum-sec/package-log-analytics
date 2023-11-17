@@ -98,7 +98,7 @@ resource "azurerm_monitor_metric_alert" "alert" {
 resource "azurerm_monitor_action_group" "action" {
   name                = var.name
   resource_group_name = var.resource_group_name
-  short_name          = var.name
+  short_name          = "TeamsAction"
   webhook_receiver {
     name                    = var.name
     service_uri             = var.webhook_url
