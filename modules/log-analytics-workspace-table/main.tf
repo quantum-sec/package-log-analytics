@@ -13,8 +13,7 @@ terraform {
       version = "~> 1.6"
     }
   }
-  required_version = ">= 1.2"
-  experiments      = [module_variable_optional_attrs]
+  required_version = ">= 1.3"
 }
 
 # If the Error: `Changing Classic table AzureDiagnostics schema by using DataCollectionRuleBased tables api is forbidden,
