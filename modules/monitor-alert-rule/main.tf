@@ -9,8 +9,7 @@ terraform {
       version = "~> 3.53"
     }
   }
-  required_version = ">= 1.2"
-  experiments      = [module_variable_optional_attrs]
+  required_version = ">= 1.3"
 }
 
 resource "azurerm_monitor_metric_alert" "alert" {
