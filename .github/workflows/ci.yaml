@@ -1,0 +1,178 @@
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - master
+      - main
+      - 'feature/**'
+      - 'fix/**'
+  workflow_dispatch:
+
+jobs:
+  cicd:
+    name: CI/CD
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Write SSH key
+        shell: bash
+        run: |
+          mkdir -p "$HOME/.ssh/"
+          echo "$QUANTUM_CI_BOT_GITHUB_SSH_KEY" > "$HOME/.ssh/id_rsa"
+          chmod 700 "$HOME/.ssh/id_rsa"
+          ssh-keyscan github.com >> "$HOME/.ssh/known_hosts"
+
+      - name: Read .terraform-version
+        id: tfver
+        shell: bash
+        run: echo "version=$(cat .terraform-version)" >> "$GITHUB_OUTPUT"
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: ${{ steps.tfver.outputs.version }}
+          terraform_wrapper: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Setup tflint
+        uses: terraform-linters/setup-tflint@v4
+        with:
+          tflint_version: latest
+
+      - name: Install tfsec
+        shell: bash
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/aquasecurity/tfsec/master/scripts/install_linux.sh | sudo bash -s -- -b /usr/local/bin
+
+      - name: Install pre-commit and checkov
+        run: pip install pre-commit checkov
+
+      - name: Configure npm auth
+        shell: bash
+        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > "$HOME/.npmrc"
+        env:
+          NPM_TOKEN: ${{ secrets.QUANTUM_CI_BOT_NPM_TOKEN }}
+
+      - name: Install semantic-release toolchain
+        run: |
+          npm install -g \
+            semantic-release \
+            @quantum-sec/quantum-changelog-convention \
+            @quantum-sec/semantic-release-config
+
+      - name: Run pre-commit
+        run: pre-commit run --all-files
+
+      - name: Run checkov
+        run: checkov --quiet --soft-fail -d .
+        continue-on-error: true
+
+      - name: Set package name
+        shell: bash
+        run: echo "PACKAGE_NAME=${GITHUB_REPOSITORY##*/}" >> "$GITHUB_ENV"
+
+      - name: Semantic release
+        id: semver
+        if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main'
+        shell: bash
+        run: |
+          npx semantic-release --dry-run false --ci false
+
+          if [ ! -s .semver ]; then
+            git --no-pager tag --points-at HEAD --sort=-refname | head -n1 > .semver || true
+          fi
+
+          if [ -s .semver ]; then
+            echo "version=$(cat .semver)" >> "$GITHUB_OUTPUT"
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.QUANTUM_CI_BOT_GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.QUANTUM_CI_BOT_NPM_TOKEN }}
+
+      - name: Checkout cncsc/actions
+        if: steps.semver.outputs.version != ''
+        uses: actions/checkout@v3
+        with:
+          repository: cncsc/actions
+          path: ./.actions/
+          ref: 287c3d970d6ab1e8b7119f4ce4d9ebfe17c60b8a
+
+      - name: Import GPG key
+        if: steps.semver.outputs.version != ''
+        run: ./.actions/scripts/utilities/import-gpg-key.sh
+        shell: bash
+        env:
+          IMPORT_GPG_KEY: ${{ secrets.IMPORT_GPG_KEY }}
+          IMPORT_GPG_KEY_ID: ${{ secrets.IMPORT_GPG_KEY_ID }}
+          IMPORT_GPG_KEY_PASSPHRASE: ${{ secrets.IMPORT_GPG_KEY_PASSPHRASE }}
+          IMPORT_GPG_KEY_SUBJECT: ${{ secrets.IMPORT_GPG_KEY_SUBJECT }}
+          SET_GIT_GPG_CONFIG: true
+
+      - name: Update infrastructure-modules references
+        if: steps.semver.outputs.version != ''
+        shell: bash
+        run: |
+          set -e
+          SEMVER="${{ steps.semver.outputs.version }}"
+          REPO="infrastructure-modules"
+
+          git config --global user.email "ci@quantum.security"
+          git config --global user.name "Quantum CI Bot"
+          git clone "git@github.com:quantum-sec/${REPO}.git"
+          pushd "./${REPO}"
+
+          current_major=$(echo "${SEMVER}" | awk -F. '{print $1}')
+
+          major_version_changed=false
+          if grep -rio --include='*.tf' --include='*.hcl' "${PACKAGE_NAME}\.git.*ref=[^${current_major}]\." . >/dev/null 2>&1; then
+            major_version_changed=true
+            branch="feature/${PACKAGE_NAME}"
+            git checkout "$branch" 2>/dev/null && git pull || git checkout -b "$branch"
+          fi
+
+          find . -name '*.tf'  -type f -exec sed -i "/${PACKAGE_NAME}\.git/ s/?ref=.*/?ref=${SEMVER}\"/" {} \;
+          find . -name '*.hcl' -type f -exec sed -i "/${PACKAGE_NAME}\.git/ s/?ref=.*/?ref=${SEMVER}\"/" {} \;
+
+          if git diff --quiet; then
+            echo "No reference changes needed"
+            exit 0
+          fi
+
+          git add .
+          git commit -m "Update ${PACKAGE_NAME} references to ${SEMVER}"
+
+          if [ "$major_version_changed" = "true" ]; then
+            git push origin "$branch"
+            title="Update ${PACKAGE_NAME} references to ${SEMVER}"
+            body="- [x] Update references to [${PACKAGE_NAME}](https://github.com/quantum-sec/${PACKAGE_NAME}) to refer to release [${SEMVER}](https://github.com/quantum-sec/${PACKAGE_NAME}/releases/tag/${SEMVER})"
+            existing=$(gh pr list --repo "quantum-sec/${REPO}" --head "$branch" --state open --json number -q '.[0].number')
+            if [ -z "$existing" ]; then
+              gh pr create --repo "quantum-sec/${REPO}" --title "$title" --body "$body" --head "$branch" --base master
+            else
+              gh pr edit --repo "quantum-sec/${REPO}" "$existing" --title "$title" --body "$body"
+            fi
+          else
+            git push origin master
+          fi
+          popd
+        env:
+          GITHUB_TOKEN: ${{ secrets.QUANTUM_CI_BOT_GITHUB_TOKEN }}
+
+    env:
+      QUANTUM_CI_BOT_GITHUB_SSH_KEY: ${{ secrets.QUANTUM_CI_BOT_GITHUB_SSH_KEY }}
